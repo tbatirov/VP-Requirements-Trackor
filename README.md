@@ -1,7 +1,6 @@
 # Requirements-package
-Requirements package
 
-Support services, system configurations, and rule requests outside the initial deployment scope of work will be documented and approved using the Requirement Tracker in OneVizion.
+Requirements package Support services, system configurations, and rule requests outside the initial deployment scope of work will be documented and approved using the Requirement Tracker in OneVizion.
 
 Requirements may be added by either the Customer or OneVizion.
 
