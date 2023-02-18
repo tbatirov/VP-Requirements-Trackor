@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><COMPONENTS author="tbatirov" description="" name="Requirements clean.xml" site="https&#x3a;&#x2f;&#x2f;dev-apps.onevizion.com" ts="" ><DB_PACKAGES>
+ <DB_PACKAGES_ITEM>
+  <DB_PKG_NAME>PKG_REQUIREMENTS_TRACKOR</DB_PKG_NAME>
+  <PKG_NAME>PKG_REQUIREMENTS_TRACKOR</PKG_NAME>
+  <DB_PACKAGE_SPEC>CREATE OR REPLACE EDITIONABLE PACKAGE &quot;PKG_REQUIREMENTS_TRACKOR&quot; as
+
+    c_flag constant varchar2(4000) := &apos;I_COMMENTS to chat &apos;;    
+
+    procedure requirements_comment_to_chat(p_xitor_id in xitor.xitor_id%type);
+    procedure chat_to_requirements_comment(p_chat_message_id in chat_message.chat_message_id%type);
+    procedure set_created_by(p_xitor_id in xitor.xitor_id%type);
+    procedure requirements_comment_history(p_xitor_id in xitor.xitor_id%type);
+    procedure send_requirements_notification(p_xitor_id in xitor.xitor_id%type);
+    
+end;</DB_PACKAGE_SPEC>
+  <DB_PACKAGE_BODY>CREATE OR REPLACE EDITIONABLE PACKAGE BODY &quot;PKG_REQUIREMENTS_TRACKOR&quot; as
+
+    procedure requirements_comment_to_chat(p_xitor_id in xitor.xitor_id%type) as
+        v_chat_msg_id chat_message.chat_message_id%type;
+        v_chat_id chat.chat_id%type;
+        v_ret_str varchar2(4000);
+    begin
+    
+        if util.getvalstrbyid(p_xitor_id, id.requirement.cf.i_comments) is null 
+        or util.isflagset(c_flag || p_xitor_id) = 1
+        then
+            util.clearflag(c_flag || p_xitor_id);
+            return;
+        else
+            util.setflag(c_flag || p_xitor_id);
+        end if;
+
+        v_chat_id := util.gettrackorchatid(p_xitor_id);
+        if v_chat_id is null then
+            v_chat_id := pkg_chat.create_trackor_chat(p_xitor_id);
+        end if;
+    
+        v_chat_msg_id := pkg_chat.create_msg_temp(v_chat_id, pkg_sec.get_cu(), util.getvalstrbyid(p_xitor_id, id.requirement.cf.i_comments));
+        pkg_chat.finalize_msg_and_notify(v_chat_msg_id, v_ret_str);
+        
+    end requirements_comment_to_chat;
+    
+    procedure chat_to_requirements_comment(p_chat_message_id in chat_message.chat_message_id%type) as
+        v_xitor_id xitor.xitor_id%type;
+        v_text chat_message.text%type;
+    begin
+        
+        select c.trackor_id, 
+               cm.text
+          into v_xitor_id, 
+               v_text
+          from chat c
+          join chat_message cm on cm.chat_id = c.chat_id
+         where cm.chat_message_id = p_chat_message_id;
+
+        if util.isflagset(c_flag || v_xitor_id) = 1 then
+            util.clearflag(c_flag || v_xitor_id);
+            return;
+        else
+            util.setflag(c_flag || v_xitor_id);
+        end if;
+    
+        util.setvalcharbyid(v_xitor_id, id.requirement.cf.i_comments, v_text);
+        
+    end chat_to_requirements_comment;
+    
+    procedure set_created_by(p_xitor_id in xitor.xitor_id%type) as
+        v_user_name users.un%type;
+        v_user_is users.user_id%type;
+    begin
+    
+        v_user_is := pkg_sec.get_cu();
+        select un 
+          into v_user_name 
+          from users 
+         where user_id = v_user_is;
+        util.setvalcharbyid(p_xitor_id, id.requirement.cf.i_created_by, v_user_name);
+    
+    end set_created_by;
+    
+    procedure requirements_comment_history(p_xitor_id in xitor.xitor_id%type) as
+        v_comment config_value_char.value_clob%type;
+    begin
+        v_comment := util.getvalmemobyid(p_xitor_id, id.requirement.cf.i_comments);
+        if v_comment is null then
+            return; 
+        end if;
+        util.setvalmemobyid(p_xitor_id, id.requirement.cf.i_comment_history, util.getcurrentuser() || &apos; &apos; || to_char(current_date, &apos;mm/dd/yyyy hh12:miAM&apos;) || chr(13) || v_comment || chr(13) || util.getvalstrbyid(p_xitor_id, id.requirement.cf.i_comment_history));
+        util.setvalmemobyid(p_xitor_id, id.requirement.cf.i_comments, null);
+    end requirements_comment_history;
+    
+    procedure send_requirements_notification(p_xitor_id in xitor.xitor_id%type) as
+        v_subject varchar2(4000);
+        v_body clob;
+        v_site_name param_system.value%type;
+        v_link config_value_char.value_char%type;
+    begin
+
+        if nvl(util.getvalnumbyid(p_xitor_id, id.requirement.cf.req_create_ov_change_request), 0) = 0 then
+            return;
+        end if;
+
+        select value 
+          into v_site_name 
+          from param_system 
+         where name = &apos;DomainName&apos;;
+        
+        v_link := pkg_rpt.get_trackor_edit_url(p_xitor_id);
+        v_subject := v_site_name || &apos; &apos; || nvl(util.getvalstrbyid(p_xitor_id, id.requirement.cf.req_project_name), &apos;Managed Services&apos;) || &apos; - &apos; || util.getvalstrbyid(p_xitor_id, id.requirement.cf.xitor_key) || &apos;: &apos; || util.getvalstrbyid(p_xitor_id, id.requirement.cf.i_issue_name);
+        v_body := util.getvalstrbyid(p_xitor_id, id.requirement.cf.i_project_detailed_description) || &apos;&lt;br&gt;&lt;br&gt;&lt;br&gt;&apos; || &apos;Customer Request Link: &lt;a href=&quot;&apos; || v_link || &apos;&quot;&gt;&apos; || v_link || &apos;&lt;/a&gt;&lt;br&gt;Customer Request ID: &apos; || util.getvalstrbyid(p_xitor_id, id.requirement.cf.xitor_key) || &apos;&lt;br&gt;Development Estimate (hours): &apos; || util.getvalnumbyid(p_xitor_id, id.requirement.cf.req_development_estimate_hours);
+        util.sendmail(
+            subject =&gt; v_subject,
+            message =&gt; v_body,
+            sender =&gt; &apos;no-reply@onevizion.com&apos;,
+            recipient =&gt; &apos;support@onevizion.com&apos;,
+            style =&gt; &apos;html&apos;
+        );
+
+    end send_requirements_notification;
+    
+end;</DB_PACKAGE_BODY>
+  <DB_PACKAGE_ID>11514</DB_PACKAGE_ID>
+  <PROGRAM_ID>1</PROGRAM_ID>
+  <BPD_ITEMS/>
+  <COMPONENT_PACKAGES>
+   <T_BPL_COMP_PKG>
+    <COMPONENT_ID>27</COMPONENT_ID>
+    <OBJECT_ID>11514</OBJECT_ID>
+    <COMPONENTS_PACKAGE_ID>101523</COMPONENTS_PACKAGE_ID>
+    <NAME>VP - Requirements Trackor</NAME>
+    <PROGRAM_ID>1</PROGRAM_ID>
+    <BPD_ITEMS/>
+    <IS_LOCKED>0</IS_LOCKED>
+   </T_BPL_COMP_PKG>
+  </COMPONENT_PACKAGES>
+  <COMPONENT_LABELS/>
+ </DB_PACKAGES_ITEM>
+</DB_PACKAGES>
+</COMPONENTS>
