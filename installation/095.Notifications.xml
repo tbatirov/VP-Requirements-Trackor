@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><COMPONENTS author="tbatirov" description="" name="Requirements clean.xml" site="https&#x3a;&#x2f;&#x2f;dev-apps.onevizion.com" ts="" ><NOTIFS>
+ <NOTIFS_ITEM>
+  <NOTIF_ID>101184</NOTIF_ID>
+  <NOTIF_NAME>Requirement Comment Added</NOTIF_NAME>
+  <NOTIF_TYPE_ID>230</NOTIF_TYPE_ID>
+  <TRACKOR_TYPE>Requirement</TRACKOR_TYPE>
+  <IS_AUTO_ACTIVATE>1</IS_AUTO_ACTIVATE>
+  <IS_HTML>1</IS_HTML>
+  <PROGRAM_ID>1</PROGRAM_ID>
+  <IS_FORCED_SUBSCRIPTION>0</IS_FORCED_SUBSCRIPTION>
+  <FILTER_OPT>
+   <FILTER_OPT_ID>1004196</FILTER_OPT_ID>
+   <MODULE_NAME>TRACKOR_BROWSER</MODULE_NAME>
+   <IS_DEFAULT_FILTER>0</IS_DEFAULT_FILTER>
+   <IS_SUBGROUP>0</IS_SUBGROUP>
+   <TRACKOR_TYPE>Requirement</TRACKOR_TYPE>
+   <PROGRAM_ID>1</PROGRAM_ID>
+   <FILTER_VIEW_TYPE_ID>3</FILTER_VIEW_TYPE_ID>
+   <FOLDERS_PATH/>
+   <FILTER_ATTRIBS/>
+   <FILTER_LOGIC_ITEMS/>
+   <COMPONENT_PACKAGES/>
+   <IS_PROPAGATE_XT_RESTRICTION>0</IS_PROPAGATE_XT_RESTRICTION>
+   <TT_RESTRICTION_XREFS/>
+  </FILTER_OPT>
+  <CONFIG_FIELDS/>
+  <ATTACHMENTS/>
+  <TASK_DATES/>
+  <WF_STEPS/>
+  <BPD_ITEMS/>
+  <COMPONENT_PACKAGES>
+   <T_BPL_COMP_PKG>
+    <COMPONENT_ID>22</COMPONENT_ID>
+    <OBJECT_ID>101184</OBJECT_ID>
+    <COMPONENTS_PACKAGE_ID>101229</COMPONENTS_PACKAGE_ID>
+    <NAME>VP - Platform Tools</NAME>
+    <PROGRAM_ID>1</PROGRAM_ID>
+    <BPD_ITEMS/>
+    <IS_LOCKED>0</IS_LOCKED>
+   </T_BPL_COMP_PKG>
+   <T_BPL_COMP_PKG>
+    <COMPONENT_ID>22</COMPONENT_ID>
+    <OBJECT_ID>101184</OBJECT_ID>
+    <COMPONENTS_PACKAGE_ID>101523</COMPONENTS_PACKAGE_ID>
+    <NAME>VP - Requirements Trackor</NAME>
+    <PROGRAM_ID>1</PROGRAM_ID>
+    <BPD_ITEMS/>
+    <IS_LOCKED>0</IS_LOCKED>
+   </T_BPL_COMP_PKG>
+  </COMPONENT_PACKAGES>
+  <IS_GROUPED>0</IS_GROUPED>
+  <SUBJ_TEMPLATE_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>0</APP_LANG_ID>
+    <APP_LABEL_ID>-38089</APP_LABEL_ID>
+    <LABEL_TEXT>[TRACKOR_TYPE] [TRACKOR_KEY] commented by [AUTHOR_OF_CHANGE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>1</APP_LANG_ID>
+    <APP_LABEL_ID>-38089</APP_LABEL_ID>
+    <LABEL_TEXT>[TRACKOR_TYPE] [TRACKOR_KEY] commented by [AUTHOR_OF_CHANGE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>5</APP_LANG_ID>
+    <APP_LABEL_ID>-38089</APP_LABEL_ID>
+    <LABEL_TEXT>[TRACKOR_TYPE] [TRACKOR_KEY] commented by [AUTHOR_OF_CHANGE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>10</APP_LANG_ID>
+    <APP_LABEL_ID>-38089</APP_LABEL_ID>
+    <LABEL_TEXT>[TRACKOR_TYPE] [TRACKOR_KEY] commented by [AUTHOR_OF_CHANGE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>15</APP_LANG_ID>
+    <APP_LABEL_ID>-38089</APP_LABEL_ID>
+    <LABEL_TEXT>[TRACKOR_TYPE] [TRACKOR_KEY] commenté par [AUTHOR_OF_CHANGE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>20</APP_LANG_ID>
+    <APP_LABEL_ID>-38089</APP_LABEL_ID>
+    <LABEL_TEXT>[Trackor_type] [Trackor_Key] a commenté par [AUTOR_OF_CHANGE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>25</APP_LANG_ID>
+    <APP_LABEL_ID>-38089</APP_LABEL_ID>
+    <LABEL_TEXT>[TRACKOR_TYPE] [TRACKOR_KEY] comentado por [AUTOR_OF_CHANGO]</LABEL_TEXT>
+   </T_LABEL>
+  </SUBJ_TEMPLATE_LABEL>
+  <MSG_TEMPLATE_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>0</APP_LANG_ID>
+    <APP_LABEL_ID>-38133</APP_LABEL_ID>
+    <LABEL_TEXT>[MESSAGE]&lt;br&gt;&lt;br&gt;
+
+[ATTACHMENTS]&lt;br&gt;&lt;br&gt;
+[COMMENT_LINK]Comment(&quot;/COMMENT_LINK&quot; is not found)&lt;br&gt;
+[ENTITY_LINK]Open [TRACKOR_KEY] [TRACKOR_TYPE][/ENTITY_LINK]&lt;br&gt;&lt;br&gt;
+[UNSUBSCRIBE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>1</APP_LANG_ID>
+    <APP_LABEL_ID>-38133</APP_LABEL_ID>
+    <LABEL_TEXT>&lt;b&gt;Chat Message:&lt;/b&gt; [MESSAGE]&lt;br&gt;
+
+&lt;b&gt;Requirement:&lt;/b&gt; [Requirement.I_ISSUE_NAME]&lt;br&gt;
+
+&lt;b&gt;Description:&lt;/b&gt; [Requirement.I_PROJECT_DETAILED_DESCRIPTION]&lt;br&gt;
+
+[ATTACHMENTS]&lt;br&gt;&lt;br&gt;
+[COMMENT_LINK]Comment(&quot;/COMMENT_LINK&quot; is not found)&lt;br&gt;
+[ENTITY_LINK]Open [TRACKOR_KEY] [TRACKOR_TYPE][/ENTITY_LINK]&lt;br&gt;&lt;br&gt;
+[UNSUBSCRIBE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>5</APP_LANG_ID>
+    <APP_LABEL_ID>-38133</APP_LABEL_ID>
+    <LABEL_TEXT>[MESSAGE]&lt;br&gt;&lt;br&gt;
+
+[ATTACHMENTS]&lt;br&gt;&lt;br&gt;
+[COMMENT_LINK]Comment(&quot;/COMMENT_LINK&quot; is not found)&lt;br&gt;
+[ENTITY_LINK]Open [TRACKOR_KEY] [TRACKOR_TYPE][/ENTITY_LINK]&lt;br&gt;&lt;br&gt;
+[UNSUBSCRIBE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>10</APP_LANG_ID>
+    <APP_LABEL_ID>-38133</APP_LABEL_ID>
+    <LABEL_TEXT>[MESSAGE]&lt;br&gt;&lt;br&gt;
+
+[ATTACHMENTS]&lt;br&gt;&lt;br&gt;
+[COMMENT_LINK]Comment(&quot;/COMMENT_LINK&quot; is not found)&lt;br&gt;
+[ENTITY_LINK]Open [TRACKOR_KEY] [TRACKOR_TYPE][/ENTITY_LINK]&lt;br&gt;&lt;br&gt;
+[UNSUBSCRIBE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>15</APP_LANG_ID>
+    <APP_LABEL_ID>-38133</APP_LABEL_ID>
+    <LABEL_TEXT>[MESSAGE] [pièces JOINTES] [COMMENT_LINK]Commentaire(&quot;/COMMENT_LINK&quot; n&apos;est pas trouvé) [ENTITY_LINK]Ouvrir [TRACKOR_KEY] [TRACKOR_TYPE][/ENTITY_LINK] [UNSUBSCRIBE]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>20</APP_LANG_ID>
+    <APP_LABEL_ID>-38133</APP_LABEL_ID>
+    <LABEL_TEXT>&lt;B&gt; Message de discussion: &lt;/ B&gt; [Message] &lt;br&gt; &lt;b&gt; Exigence: &lt;/ B&gt; [exigence.Irissue_name] &lt;br&gt; &lt;b&gt; Description: &lt;/ B&gt; [exigence.I_PROJEJEJECT_DEATINED_DEDESTIONN] &lt;br&gt; [Pièces jointes] &lt;br&gt; &lt;br&gt; [Commentaire_Link] Commentaire (/ Commentaire_Link est introuvable) &lt;br&gt; [Entity_Link] Ouvrir [Trackor_Key] [Trackor_Type] [/ Entity_Link] &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; &lt;br&gt; [Désubliez]</LABEL_TEXT>
+   </T_LABEL>
+   <T_LABEL>
+    <APP_LANG_ID>25</APP_LANG_ID>
+    <APP_LABEL_ID>-38133</APP_LABEL_ID>
+    <LABEL_TEXT>[MENSAJE] [ADJUEGO] [COMENTAR_LINK] Comentario (“/COMENTAR_LINK” no se encuentra) [ENTITY_LINK] Abrir [TRACKOR_KEY] [TRACKOR_TY_TYPE] [/ENTITY_LINK] [Darse de baja]</LABEL_TEXT>
+   </T_LABEL>
+  </MSG_TEMPLATE_LABEL>
+  <IS_SKIP_AUTHOR>0</IS_SKIP_AUTHOR>
+ </NOTIFS_ITEM>
+</NOTIFS>
+</COMPONENTS>
